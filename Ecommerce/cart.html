@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | Admire</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { 
+      background-color: #f8f9fa; 
+      padding-top: 100px; 
+      font-family: 'Arial', sans-serif;
+    }
+    
+    /* Smaller, better-aligned product image */
+    .product-img {
+      width: 80px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .quantity-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+     
+    }
+    
+    .navbar { 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+    }
+    
+    .navbar-brand img { 
+      height: 40px; 
+    }
+    
+    .card { 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+      border: none;
+      border-radius: 12px;
+    }
+    
+    /* Better spacing in table */
+    .table th, .table td {
+      vertical-align: middle;
+      padding: 1rem;
+    }
+    
+    .table .product-cell {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .checkout-btn {
+     width: auto;
+  display: inline-block;
+  background-color: #e60023; /* rich red */
+  color: white;
+  border: none;
+}
+
+.checkout-btn:hover {
+  background-color: #c4001a;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+  <div class="container d-flex justify-content-between align-items-center">
+    <a class="navbar-brand" href="index.html"><img src="images/logo2.png" alt="Admire"></a>
+    <a href="index.html" class="btn btn-outline-primary">← Continue Shopping</a>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <h2 class="my-5 text-center fw-bold">Your Shopping Cart</h2>
+
+  <div id="empty-cart" class="text-center py-5">
+    <h4>Your cart is empty</h4>
+    <p>Add some stylish items to get started!</p>
+    <a href="index.html" class="btn btn-primary btn-lg mt-3">Shop Now</a>
+  </div>
+
+  <div id="cart-items" class="table-responsive"></div>
+
+  <div id="cart-summary" class="mt-5"></div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cart = JSON.parse(localStorage.getItem('admireCart')) || {};
+    const cartItemsDiv = document.getElementById('cart-items');
+    const emptyCartDiv = document.getElementById('empty-cart');
+    const cartSummary = document.getElementById('cart-summary');
+
+    if (Object.keys(cart).length === 0) {
+      emptyCartDiv.style.display = 'block';
+      cartItemsDiv.innerHTML = '';
+      cartSummary.innerHTML = '';
+      return;
+    }
+
+    emptyCartDiv.style.display = 'none';
+
+    let table = `
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th style="text-align: center;">Quantity</th>
+            <th>Total</th>
+            <th style="text-align: center;">Action</th>
+          </tr>
+        </thead>
+        <tbody>`;
+
+    let grandTotal = 0;
+
+    Object.keys(cart).forEach(name => {
+      const item = cart[name];
+      const qty = item.qty;
+      const price = item.price;
+      const image = item.image || 'images/placeholder.jpg'; // fallback if missing
+      const total = price * qty;
+      grandTotal += total;
+
+      table += `
+        <tr>
+          <td class="product-cell">
+            <img src="${image}" alt="${name}" class="product-img">
+            <strong>${name}</strong>
+          </td>
+          <td class="fw-bold">₹${price}</td>
+          <td>
+            <div class="d-flex justify-content-center align-items-center gap-3">
+              <button class="quantity-btn btn btn-outline-danger" onclick="updateQty('${name}', -1)">−</button>
+              <strong class="fs-5">${qty}</strong>
+              <button class="quantity-btn btn btn-outline-success" onclick="updateQty('${name}', 1)">+</button>
+            </div>
+          </td>
+          <td class="fw-bold fs-5">₹${total}</td>
+          <td>
+            <button class="btn btn-danger btn-sm px-4" onclick="removeItem('${name}')">Remove</button>
+          </td>
+        </tr>`;
+    });
+
+    table += `</tbody></table>`;
+    cartItemsDiv.innerHTML = table;
+
+    cartSummary.innerHTML = `
+      <div class="card p-4 border-0 shadow">
+        <h4 class="fw-bold">Order Summary</h4>
+        <hr>
+        <div class="d-flex justify-content-between mb-2">
+          <h5>Subtotal (${Object.keys(cart).reduce((sum, key) => sum + cart[key].qty, 0)} items)</h5>
+          <h5>₹${grandTotal}</h5>
+        </div>
+        <div class="d-flex justify-content-between mt-2 text-muted">
+          <small>Shipping & taxes</small>
+          <small>Calculated at checkout</small>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-between align-items-center">
+          <h4 class="fw-bold mb-0">Total</h4>
+          <h4 class="fw-bold text-success mb-0">₹${grandTotal}</h4>
+        </div>
+<button class="btn mt-4 px-3 py-2 fw-bold checkout-btn">
+  Proceed to Checkout
+</button>
+
+
+      </div>`;
+  });
+
+  function updateQty(name, change) {
+    let cart = JSON.parse(localStorage.getItem('admireCart')) || {};
+    if (cart[name]) {
+      cart[name].qty += change;
+      if (cart[name].qty <= 0) {
+        delete cart[name];
+      }
+      localStorage.setItem('admireCart', JSON.stringify(cart));
+      location.reload();
+    }
+  }
+
+  function removeItem(name) {
+    let cart = JSON.parse(localStorage.getItem('admireCart')) || {};
+    delete cart[name];
+    localStorage.setItem('admireCart', JSON.stringify(cart));
+    location.reload();
+  }
+</script>
+</body>
+</html>

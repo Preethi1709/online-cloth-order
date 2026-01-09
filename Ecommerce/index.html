@@ -1,0 +1,2303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admire | Fashion for Everyone</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: white;
+      padding-top: 90px;
+    }
+
+    .navbar {
+      /* padding: 5px 0x; */
+      /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+        padding: 4px 0;
+  min-height: auto !important;
+    } 
+      
+    /* Logo flush to left edge */
+    .navbar-brand {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    .position-absolute.start-50.translate-middle-x {
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+    }
+
+    /* .navbar-brand img.logo {
+      height: 120px;
+      width: 250px;
+      object-fit: contain;
+      margin-left: 0 !important;
+    } */
+     .navbar-brand img.logo {
+  height: 65px;
+  width: auto;
+     object-fit: contain;
+}
+
+
+    .nav-link {
+      font-weight: 500;
+      text-transform: uppercase;
+       margin: 0 10px;
+         padding: 6px 10px;
+      color: #333;
+    }
+
+    .nav-link.active {
+      color: #007bff !important;
+      border-bottom: 2px solid #007bff;
+    }
+
+    .right-section {
+      margin-right: 100px !important;
+      /* Adjust this value: 30px = slight left move, 60px = more */
+    }
+
+    .search-box {
+      max-width: 280px;
+      min-width: 200px;
+      border-radius: 30px;
+      padding: 10px 20px;
+      border: 1px solid #ced4da;
+    }
+
+    /* Gap between search and cart */
+    .gap-4 {
+      gap: 35px !important;
+    }
+
+    .cart-icon {
+      height: 28px;
+      cursor: pointer;
+    }
+
+    .btn-outline-primary {
+     padding: 3px 8px;   /* height | width */
+  border-width: 1.5px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .btn-outline-primary:hover {
+      background: #007bff;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* .hero-section {
+      height: calc(100vh - 140px);
+      min-height: 600px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 2;
+    }
+
+    .hero-content {
+      z-index: 3;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    } */
+
+
+    .hero-section {
+  height: 100vh;
+  overflow: hidden;
+  height: calc(100vh - 140px);
+}
+
+.hero-bg-img,
+.carousel img {
+  object-fit: cover;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+
+.hero-content {
+  z-index: 3;
+}
+
+.carousel {
+  z-index: 1;
+}
+
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card-img-top {
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+      padding: 10px;
+      background:linear-gradient(135deg, #4FACFE, #F770C1);
+      border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .quantity-controls img {
+      height: 25px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .quantity-controls img:hover {
+      transform: scale(1.2);
+    }
+
+    .quantity-controls span {
+      font-size: 1.3rem;
+      font-weight: bold;
+      min-width: 40px;
+      text-align: center;
+      color: #007bff;
+    }
+
+    footer {
+      background-color: #212529;
+      color: #fff;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 992px) {
+      .navbar-nav.mx-auto {
+        position: static !important;
+        transform: none !important;
+      }
+
+      .search-box {
+        max-width: 180px;
+      }
+
+      /* Hide Sign In text on small screens, show icon if needed */
+      .btn-outline-primary {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-top: 80px;
+      }
+
+      .navbar-brand img.logo {
+        height: 60px;
+        width: auto;
+      }
+
+      .search-box {
+        max-width: 140px;
+        font-size: 0.9rem;
+      }
+
+      /* Optional: Hide Sign In button text on very small screens */
+      .btn-outline-primary span {
+        display: none;
+      }
+
+      .btn-outline-primary::before {
+        content: "Sign In";
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <!-- NAVBAR -->
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container-fluid px-0">
+
+      <!-- Left Side: Logo + Sign In Button -->
+      <div class="d-flex align-items-center">
+        <!-- Logo - Flush left -->
+        <a class="navbar-brand me-0" href="index.html">
+          <img src="images/image.png" alt="Admire Logo" class="logo">
+        </a>
+
+        <!-- Sign In Button - Next to logo, visible on medium+ screens -->
+        <a href="sign.html" class="btn btn-outline-primary rounded-pill px-4 ms-4 d-none d-md-block">
+          Sign In
+        </a>
+      </div>
+      <!-- Category Links - Centered -->
+      <!-- Category Links - Perfectly centered -->
+      <ul class="navbar-nav mx-auto position-absolute start-50 translate-middle-x">
+        <li class="nav-item"><a class="nav-link category-link active" data-category="all">ALL</a></li>
+        <li class="nav-item"><a class="nav-link category-link" data-category="kids">KIDS</a></li>
+        <li class="nav-item"><a class="nav-link category-link" data-category="men">MEN</a></li>
+        <li class="nav-item"><a class="nav-link category-link" data-category="women">WOMEN</a></li>
+      </ul>
+
+      <!-- Right Side: Search + Cart (moved slightly left) -->
+      <!-- <div class="d-flex align-items-center gap-4 ms-auto me-4 right-section"> -->
+      <div class="d-flex align-items-center gap-4 ms-auto right-section">
+        <input type="text" id="search-input" placeholder="Search products..." class="search-box form-control">
+        <a href="cart.html" class="position-relative">
+          <img src="images/carts.png" alt="Cart" class="cart-icon">
+          <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            0
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  </div>
+  </nav>
+
+  <!-- HERO -->
+<section class="hero-section position-relative">
+
+  <!-- Carousel Background -->
+ <div id="heroCarousel"
+     class="carousel slide carousel-fade position-absolute w-100 h-100"
+     data-bs-ride="carousel"
+     data-bs-interval="3000">
+
+    <div class="carousel-inner h-100">
+      <div class="carousel-item active h-100">
+        <img src="images/background.png" class="d-block w-100 h-100 object-fit-cover" alt="Slide 1">
+      </div>
+      <div class="carousel-item h-100">
+        <img src="images/background2.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Slide 2">
+      </div>
+      <div class="carousel-item h-100">
+        <img src="images/background3.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Slide 3">
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div class="hero-overlay position-absolute w-100 h-100"></div>
+
+  <!-- Content -->
+  <div class="hero-content position-absolute top-50 start-50 translate-middle text-white text-center">
+    <h1 class="display-1 fw-bold mb-4">ADMIRE</h1>
+    <p class="lead fs-2 fw-light">
+      Thoughtfully designed with refined details and premium fabrics,<br>
+      crafted to elevate your everyday style with effortless confidence.
+    </p>
+  </div>
+
+</section>
+
+
+  <!-- PRODUCTS -->
+  <section class="container py-5 mt-5">
+    <div class="row" id="product-list">
+
+      <!-- KIDS SECTION -->
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids Dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kids.jpg" class="card-img-top" alt="Kids Dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids Dress</h5>
+              <p class="fw-bold fs-5">₹500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids Skirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kidsskirts.jpeg" class="card-img-top" alt="Kids Skirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids Skirt</h5>
+              <p class="fw-bold fs-5">₹300</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids Raincoat" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kidsraincoat.jpeg" class="card-img-top" alt="Kids Raincoat">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids Raincoat</h5>
+              <p class="fw-bold fs-5">₹600</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids Frock" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kidsfrock.jpg" class="card-img-top" alt="Kids Frock">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids Frock</h5>
+              <p class="fw-bold fs-5">₹800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids Gown" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kidsgown.jpg" class="card-img-top" alt="Kids Gown">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids Gown</h5>
+              <p class="fw-bold fs-5">₹850</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids Jacket" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kidsjacket.jpeg" class="card-img-top" alt="Kids Jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids Jacket</h5>
+              <p class="fw-bold fs-5">₹950</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids Pinafore" data-price="1100">
+        <div class="card h-100">
+          <img src="images/Pinafore .jpg" class="card-img-top" alt="Kids Pinafore">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids Pinafore</h5>
+              <p class="fw-bold fs-5">₹1000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids Frock" data-price="1100">
+        <div class="card h-100">
+          <img src="images/violet.webp" class="card-img-top" alt="Kids Frock">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids Frock</h5>
+              <p class="fw-bold fs-5">₹1000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids Frock" data-price="1100">
+        <div class="card h-100">
+          <img src="images/pink.webp" class="card-img-top" alt="Kids Frock">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids Frock</h5>
+              <p class="fw-bold fs-5">₹1500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/white.avif" class="card-img-top" alt="Kids Frock">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids Dress</h5>
+              <p class="fw-bold fs-5">₹1500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids Frock" data-price="1100">
+        <div class="card h-100">
+          <img src="images/whitefrock.avif" class="card-img-top" alt="Kids Frock">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids Frock</h5>
+              <p class="fw-bold fs-5">₹1800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids Woolen dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kidwoolen.avif" class="card-img-top" alt="Kids wooeln">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids Woolen Dress</h5>
+              <p class="fw-bold fs-5">₹2000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids T-Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kidtshirt.avif" class="card-img-top" alt="Kids T-Shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kids T-Shirt</h5>
+              <p class="fw-bold fs-5">₹500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/girldress.avif" class="card-img-top" alt="Kids dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's dress</h5>
+              <p class="fw-bold fs-5">₹800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids jacket" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kidjacket.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's jacket</h5>
+              <p class="fw-bold fs-5">₹800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/dress1.avif" class="card-img-top" alt="Kids dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's dress</h5>
+              <p class="fw-bold fs-5">₹600</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids jacket" data-price="1100">
+        <div class="card h-100">
+          <img src="images/jacket2.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's jacket</h5>
+              <p class="fw-bold fs-5">₹900</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Boy's dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/boy.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Boy's dress</h5>
+              <p class="fw-bold fs-5">₹900</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kids's pant" data-price="1100">
+        <div class="card h-100">
+          <img src="images/pant2.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's pant</h5>
+              <p class="fw-bold fs-5">₹900</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kid's dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/boy2.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's dress</h5>
+              <p class="fw-bold fs-5">₹1000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kid's Frock" data-price="1100">
+        <div class="card h-100">
+          <img src="images/frock4.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's Frock</h5>
+              <p class="fw-bold fs-5">₹1200</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kid's Frock" data-price="1100">
+        <div class="card h-100">
+          <img src="images/frock4.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's Frock</h5>
+              <p class="fw-bold fs-5">₹1200</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kid's Frock" data-price="1100">
+        <div class="card h-100">
+          <img src="images/frock5.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's Frock</h5>
+              <p class="fw-bold fs-5">₹1000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kid's Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kidshirt2.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's Shirt</h5>
+              <p class="fw-bold fs-5">₹1200</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kid's Midi" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kidmidi.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's Midi</h5>
+              <p class="fw-bold fs-5">₹1400</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kid's dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kiddree5.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's dress</h5>
+              <p class="fw-bold fs-5">₹1500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kid's overcoat" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kidovercoat.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's overcoat</h5>
+              <p class="fw-bold fs-5">₹1800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="kids" data-name="Kid's Dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/kiddress8.avif" class="card-img-top" alt="Kids jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kid's Dress</h5>
+              <p class="fw-bold fs-5">₹1200</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <!-- MEN SECTION -->
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/shirt.jpeg" class="card-img-top" alt="Men's Shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Shirt</h5>
+              <p class="fw-bold fs-5">₹1,100</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/brown.avif" class="card-img-top" alt="Men's Dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Dress</h5>
+              <p class="fw-bold fs-5">₹3000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/shirt9.avif" class="card-img-top" alt="Men's Shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Shirt</h5>
+              <p class="fw-bold fs-5">₹1000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/shirt11.avif" class="card-img-top" alt="Men's Shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Shirt</h5>
+              <p class="fw-bold fs-5">₹1200</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Coat" data-price="1100">
+        <div class="card h-100">
+          <img src="images/mencoat.avif" class="card-img-top" alt="Men's Coat">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Coat</h5>
+              <p class="fw-bold fs-5">₹2000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Formal dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/formal3.avif" class="card-img-top" alt="Men's Formal dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Formal dress</h5>
+              <p class="fw-bold fs-5">₹5000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Woolen dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/menswoolen.avif" class="card-img-top" alt="Men's Formal dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Woolen dress</h5>
+              <p class="fw-bold fs-5">₹1500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/shirt12.avif" class="card-img-top" alt="Men's shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Shirt</h5>
+              <p class="fw-bold fs-5">₹1400</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Woolen dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/menwoolen2.avif" class="card-img-top" alt="Men's Woolen dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Woolen dress</h5>
+              <p class="fw-bold fs-5">₹1800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/shirt13.avif" class="card-img-top" alt="Men's Woolen dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Shirt</h5>
+              <p class="fw-bold fs-5">₹1500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/mensdrees.avif" class="card-img-top" alt="Men's Woolen dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Dress</h5>
+              <p class="fw-bold fs-5">₹900</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/shirt14.avif" class="card-img-top" alt="Men's Woolen dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Shirt</h5>
+              <p class="fw-bold fs-5">₹1400</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/shirt15.avif" class="card-img-top" alt="Men's Woolen dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Shirt</h5>
+              <p class="fw-bold fs-5">₹1500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Hoodie" data-price="1100">
+        <div class="card h-100">
+          <img src="images/hoodie4.avif" class="card-img-top" alt="Men's Hoodie">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Hoodie</h5>
+              <p class="fw-bold fs-5">₹1500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/black.avif" class="card-img-top" alt="Men's Coat">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Dress</h5>
+              <p class="fw-bold fs-5">₹2000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Pant" data-price="1100">
+        <div class="card h-100">
+          <img src="images/menpant2.avif" class="card-img-top" alt="Men's Pant">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Pant</h5>
+              <p class="fw-bold fs-5">₹1200</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Formal Dress" data-price="1100">
+        <div class="card h-100">
+          <img src="images/menformaldress2.avif" class="card-img-top" alt="Men's Formal Dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Formal Dress</h5>
+              <p class="fw-bold fs-5">₹1200</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Formal Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/Formal.jpeg" class="card-img-top" alt="Formal Shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Formal Shirt</h5>
+              <p class="fw-bold fs-5">₹1,500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's T-Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/mentshiet3.avif" class="card-img-top" alt="tShirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's T-Shirt</h5>
+              <p class="fw-bold fs-5">₹1,200</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/mentshirt8.avif" class="card-img-top" alt="tShirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Shirt</h5>
+              <p class="fw-bold fs-5">₹1,800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="T-Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/tshirt.jpeg" class="card-img-top" alt="T-Shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">T-Shirt</h5>
+              <p class="fw-bold fs-5">₹1,400</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Polo T-Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/polo.jpeg" class="card-img-top" alt="Polo T-Shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Polo T-Shirt</h5>
+              <p class="fw-bold fs-5">₹1800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Skin Fit Jeans" data-price="1100">
+        <div class="card h-100">
+          <img src="images/skin.jpeg" class="card-img-top" alt="Skin Fit Jeans">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Skin Fit Jeans</h5>
+              <p class="fw-bold fs-5">₹1000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/shirt3.jpg" class="card-img-top" alt="Oversized T-Shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Shirt</h5>
+              <p class="fw-bold fs-5">₹900</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Hoodie" data-price="1100">
+        <div class="card h-100">
+          <img src="images/Hoodies.jpeg" class="card-img-top" alt="Men's Hoodie">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Hoodie</h5>
+              <p class="fw-bold fs-5">₹800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Formal" data-price="1100">
+        <div class="card h-100">
+          <img src="images/mensformal.jpeg" class="card-img-top" alt="Men's Formal">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Formal</h5>
+              <p class="fw-bold fs-5">₹1,500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Kurta" data-price="1100">
+        <div class="card h-100">
+          <img src="images/Kurta.jpeg" class="card-img-top" alt="Men's Kurta">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Kurta</h5>
+              <p class="fw-bold fs-5">₹2000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Jacket" data-price="1100">
+        <div class="card h-100">
+          <img src="images/bomber.jpeg" class="card-img-top" alt="Men's Jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Jacket</h5>
+              <p class="fw-bold fs-5">₹2500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Sweatshirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/sweat.jpeg" class="card-img-top" alt="Sweatshirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Sweatshirt</h5>
+              <p class="fw-bold fs-5">₹1,100</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Denim Shorts" data-price="1100">
+        <div class="card h-100">
+          <img src="images/denim.jpeg" class="card-img-top" alt="Denim Shorts">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Denim Shorts</h5>
+              <p class="fw-bold fs-5">₹1,600</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Traditional Wear" data-price="1100">
+        <div class="card h-100">
+          <img src="images/Traditional (1).jpeg" class="card-img-top" alt="Men's Traditional Wear">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Traditional Wear</h5>
+              <p class="fw-bold fs-5">₹3000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Coat" data-price="1100">
+        <div class="card h-100">
+          <img src="images/coat.jpeg" class="card-img-top" alt="Men's Coat">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Coat</h5>
+              <p class="fw-bold fs-5">₹2800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's Cargo Pants" data-price="1100">
+        <div class="card h-100">
+          <img src="images/cargopants.jpeg" class="card-img-top" alt="Men's Cargo Pants">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's Cargo Pants</h5>
+              <p class="fw-bold fs-5">₹1900</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Men's T-Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/bike.jpeg" class="card-img-top" alt="Men's T-Shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Men's T-Shirt</h5>
+              <p class="fw-bold fs-5">₹500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="men" data-name="Crew Neck Shirt" data-price="1100">
+        <div class="card h-100">
+          <img src="images/crewneck.jpeg" class="card-img-top" alt="Crew Neck Shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Crew Neck Shirt</h5>
+              <p class="fw-bold fs-5">₹600</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WOMEN SECTION -->
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Maxi Dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/maxi.jpeg" class="card-img-top" alt="Maxi Dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Maxi Dress</h5>
+              <p class="fw-bold fs-5">₹800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women Frock" data-price="3500">
+        <div class="card h-100">
+          <img src="images/womenfrock5.avif" class="card-img-top" alt="Maxi Dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's Frock</h5>
+              <p class="fw-bold fs-5">₹2000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's Kurti" data-price="1500">
+        <div class="card h-100">
+          <img src="images/womenkurti2.avif" class="card-img-top" alt="Maxi Dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's Kurti</h5>
+              <p class="fw-bold fs-5">₹1500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's jacket" data-price="3500">
+        <div class="card h-100">
+          <img src="images/jackets.jpg" class="card-img-top" alt="Women's jacket">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's jacket</h5>
+              <p class="fw-bold fs-5">₹1200</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/womendress2.avif" class="card-img-top" alt="Women's dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's dress</h5>
+              <p class="fw-bold fs-5">₹3000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="jump suit" data-price="3500">
+        <div class="card h-100">
+          <img src="images/Jumpsuit.avif" class="card-img-top" alt="Women's dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Jump Suit</h5>
+              <p class="fw-bold fs-5">₹2000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="jump suit" data-price="3500">
+        <div class="card h-100">
+          <img src="images/jumpsuit2.avif" class="card-img-top" alt="Women's dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Jump Suit</h5>
+              <p class="fw-bold fs-5">₹2500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's shirt" data-price="3500">
+        <div class="card h-100">
+          <img src="images/girlshirt.avif" class="card-img-top" alt="Women's dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's shirt</h5>
+              <p class="fw-bold fs-5">₹3000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's woolen cloth" data-price="3500">
+        <div class="card h-100">
+          <img src="images/woolen.jpg" class="card-img-top" alt="Women's woolen cloth">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's woolen cloth</h5>
+              <p class="fw-bold fs-5">₹2000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's Pant" data-price="3500">
+        <div class="card h-100">
+          <img src="images/womenpant.avif" class="card-img-top" alt="Women's woolen cloth">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's Pant</h5>
+              <p class="fw-bold fs-5">₹1200</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's shirt" data-price="3500">
+        <div class="card h-100">
+          <img src="images/womenshirt3.avif" class="card-img-top" alt="Women's woolen cloth">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's shirt</h5>
+              <p class="fw-bold fs-5">₹1500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's leather coat" data-price="3000">
+        <div class="card h-100">
+          <img src="images/leathercoat.jpg" class="card-img-top" alt="Women's leather coat">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's leather coat</h5>
+              <p class="fw-bold fs-5">₹3000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's Frock" data-price="3000">
+        <div class="card h-100">
+          <img src="images/frock2.jpg" class="card-img-top" alt="Women's Frock">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's Frock</h5>
+              <p class="fw-bold fs-5">₹3000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's Frock" data-price="3000">
+        <div class="card h-100">
+          <img src="images/froc.jpg" class="card-img-top" alt="Women's leather coat">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's Frock</h5>
+              <p class="fw-bold fs-5">₹3000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="shirt" data-price="3000">
+        <div class="card h-100">
+          <img src="images/shirt.jpg" class="card-img-top" alt="Women's shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3"> shirt</h5>
+              <p class="fw-bold fs-5">₹3000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's Oversized T-Shirt"
+        data-price="3500">
+        <div class="card h-100">
+          <img src="images/oversized.jpeg" class="card-img-top" alt="Women's Oversized T-Shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's Oversized T-Shirt</h5>
+              <p class="fw-bold fs-5">₹600</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's Gown" data-price="3500">
+        <div class="card h-100">
+          <img src="images/Gown.jpeg" class="card-img-top" alt="Women's Gown">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's Gown</h5>
+              <p class="fw-bold fs-5">₹3,500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Crop Top" data-price="3500">
+        <div class="card h-100">
+          <img src="images/croptop.jpeg" class="card-img-top" alt="Crop Top">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Crop Top</h5>
+              <p class="fw-bold fs-5">₹1000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Saree" data-price="3500">
+        <div class="card h-100">
+          <img src="images/Saree.jpg" class="card-img-top" alt="Saree">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Saree</h5>
+              <p class="fw-bold fs-5">₹1500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Pleated Skirt" data-price="3500">
+        <div class="card h-100">
+          <img src="images/pleatedskirt.jpeg" class="card-img-top" alt="Pleated Skirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Pleated Skirt</h5>
+              <p class="fw-bold fs-5">₹400</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Womens's overcoat" data-price="3500">
+        <div class="card h-100">
+          <img src="images/overcoat.jpg" class="card-img-top" alt="Women's overcoat">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's overcoat</h5>
+              <p class="fw-bold fs-5">₹3200</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Palazzo Pants" data-price="3500">
+        <div class="card h-100">
+          <img src="images/palazopant.jpeg" class="card-img-top" alt="Palazzo Pants">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Palazzo Pants</h5>
+              <p class="fw-bold fs-5">₹1,100</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Knitwear" data-price="3500">
+        <div class="card h-100">
+          <img src="images/knitwear.jpeg" class="card-img-top" alt="Knitwear">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Knitwear</h5>
+              <p class="fw-bold fs-5">₹1,100</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/womendress13.avif" class="card-img-top" alt="Women's dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's dress</h5>
+              <p class="fw-bold fs-5">₹2000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+           <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's Pant" data-price="3500">
+        <div class="card h-100">
+          <img src="images/Womenpant3.avif" class="card-img-top" alt="Women's dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's pant</h5>
+              <p class="fw-bold fs-5">₹1800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+         <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's crop top" data-price="3500">
+        <div class="card h-100">
+          <img src="images/croptop.jpeg" class="card-img-top" alt="Women's dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's crop top</h5>
+              <p class="fw-bold fs-5">₹2500/p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Kurti" data-price="3500">
+        <div class="card h-100">
+          <img src="images/Kurti.jpeg" class="card-img-top" alt="Kurti">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Kurti</h5>
+              <p class="fw-bold fs-5">₹900</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/womendress12.avif" class="card-img-top" alt="Women's dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's dress</h5>
+              <p class="fw-bold fs-5">₹2000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Midi Dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/Midi.jpeg" class="card-img-top" alt="Midi Dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Midi Dress</h5>
+              <p class="fw-bold fs-5">₹1000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's jumpsuit" data-price="3500">
+        <div class="card h-100">
+          <img src="images/jumpsuit3.avif" class="card-img-top" alt="Midi Dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's jumpsuit</h5>
+              <p class="fw-bold fs-5">₹2000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+           <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women'shirt" data-price="3500">
+        <div class="card h-100">
+          <img src="images/womenshirt5.avif" class="card-img-top" alt="Women's shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's shirt</h5>
+              <p class="fw-bold fs-5">₹1800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women'dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/womendress11.avif" class="card-img-top" alt="Women's dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's dress</h5>
+              <p class="fw-bold fs-5">₹2000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+          <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women'dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/jumpsuit6.avif" class="card-img-top" alt="Women's shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's dress</h5>
+              <p class="fw-bold fs-5">₹2500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+            <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women'dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/jumpsuit7.avif" class="card-img-top" alt="Women's shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's dress</h5>
+              <p class="fw-bold fs-5">₹2800</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+             <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's crop top" data-price="3500">
+        <div class="card h-100">
+          <img src="images/croptop2.avif" class="card-img-top" alt="Women's shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's crop top</h5>
+              <p class="fw-bold fs-5">₹1500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+           <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's Dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/womendress8.avif" class="card-img-top" alt="Women's shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's Dress</h5>
+              <p class="fw-bold fs-5">₹2500</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+             <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's Dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/trad.avif" class="card-img-top" alt="Women's shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's Dress</h5>
+              <p class="fw-bold fs-5">₹3000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+             <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women's Dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/womendress9.avif" class="card-img-top" alt="Women's shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's Dress</h5>
+              <p class="fw-bold fs-5">₹4000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+              <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Women'dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/jumpsuit5.avif" class="card-img-top" alt="Women's shirt">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Women's dress</h5>
+              <p class="fw-bold fs-5">₹3000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4 mb-5 product-item" data-category="women" data-name="Wrap Dress" data-price="3500">
+        <div class="card h-100">
+          <img src="images/wrapdress.jpeg" class="card-img-top" alt="Wrap Dress">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="mt-3">Wrap Dress</h5>
+              <p class="fw-bold fs-5">₹1000</p>
+            </div>
+            <div class="quantity-controls">
+              <img src="images/remove_icon_red.png" class="remove-icon" alt="Remove">
+              <span class="quantity">0</span>
+              <img src="images/add_icon_green.png" class="add-icon" alt="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Pagination -->
+  <div class="pagination-container d-flex justify-content-center mb-5">
+    <nav aria-label="Product pagination">
+      <ul class="pagination" id="pagination"></ul>
+    </nav>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-light pt-5 pb-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>ADMIRE</h5>
+          <p>Designed to be admired.<br>Worn with effortless confidence.</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+            <li><a href="index.html#kids" class="text-light text-decoration-none category-footer-link"
+                data-category="kids">Kids</a></li>
+            <li><a href="index.html#men" class="text-light text-decoration-none category-footer-link"
+                data-category="men">Men</a></li>
+            <li><a href="index.html#women" class="text-light text-decoration-none category-footer-link"
+                data-category="women">Women</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Contact</h5>
+          <p>Email: support@admire.com<br>Phone: +91 98765 43210</p>
+        </div>
+      </div>
+      <hr class="border-light">
+      <div class="text-center">© 2025 Admire. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const productItems = document.querySelectorAll('.product-item');
+      const cartCount = document.getElementById('cart-count');
+      const searchInput = document.getElementById('search-input');
+      const categoryLinks = document.querySelectorAll('.category-link');
+      const paginationEl = document.getElementById('pagination');
+
+      const PRODUCTS_PER_PAGE = 9;
+      let currentPage = 1;
+
+      let cart = JSON.parse(localStorage.getItem('admireCart')) || {};
+
+      // Update cart display
+      const updateCartDisplay = () => {
+        let totalItems = 0;
+        productItems.forEach(item => {
+          const name = item.dataset.name;
+          const itemData = cart[name];
+          const qty = itemData ? itemData.qty : 0;
+          totalItems += qty;
+          const quantitySpan = item.querySelector('.quantity');
+          if (quantitySpan) quantitySpan.textContent = qty;
+        });
+        cartCount.textContent = totalItems;
+        localStorage.setItem('admireCart', JSON.stringify(cart));
+      };
+
+      // Add to cart
+      document.querySelectorAll('.add-icon').forEach(icon => {
+        icon.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const card = e.target.closest('.product-item');
+          const name = card.dataset.name;
+          const price = parseInt(card.dataset.price);
+          const image = card.querySelector('.card-img-top').src;
+          if (!cart[name]) cart[name] = { qty: 0, price, image };
+          cart[name].qty += 1;
+          updateCartDisplay();
+        });
+      });
+
+      // Remove from cart
+      document.querySelectorAll('.remove-icon').forEach(icon => {
+        icon.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const card = e.target.closest('.product-item');
+          const name = card.dataset.name;
+          if (cart[name] && cart[name].qty > 0) {
+            cart[name].qty -= 1;
+            if (cart[name].qty === 0) delete cart[name];
+            updateCartDisplay();
+          }
+        });
+      });
+
+      // FIXED: Correct pagination rendering
+      const renderProducts = () => {
+        let visibleIndex = 0;
+        const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
+        const end = start + PRODUCTS_PER_PAGE;
+
+        productItems.forEach(item => {
+          if (item.classList.contains('hidden')) {
+            item.style.display = 'none';
+          } else {
+            if (visibleIndex >= start && visibleIndex < end) {
+              item.style.display = 'block';  // Critical: use 'block' not ''
+            } else {
+              item.style.display = 'none';
+            }
+            visibleIndex++;
+          }
+        });
+      };
+      // Pagination
+      const renderPagination = () => {
+        const visibleCount = Array.from(productItems).filter(item => !item.classList.contains('hidden')).length;
+        const pageCount = Math.ceil(visibleCount / PRODUCTS_PER_PAGE);
+
+        paginationEl.innerHTML = '';
+
+        if (pageCount <= 1) return;
+
+        // Previous
+        const prevLi = document.createElement('li');
+        prevLi.className = 'page-item' + (currentPage === 1 ? ' disabled' : '');
+        prevLi.innerHTML = `<a class="page-link" href="#" aria-label="Previous"><span>&laquo;</span></a>`;
+        prevLi.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (currentPage > 1) {
+            currentPage--;
+            renderProducts();
+            renderPagination();
+            window.scrollTo({ top: document.querySelector('#product-list').offsetTop - 150, behavior: 'smooth' });
+          }
+        });
+        paginationEl.appendChild(prevLi);
+
+        // Page numbers
+        for (let i = 1; i <= pageCount; i++) {
+          const li = document.createElement('li');
+          li.className = 'page-item' + (i === currentPage ? ' active' : '');
+          li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+          li.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentPage = i;
+            renderProducts();
+            renderPagination();
+            window.scrollTo({ top: document.querySelector('#product-list').offsetTop - 150, behavior: 'smooth' });
+          });
+          paginationEl.appendChild(li);
+        }
+
+        // Next
+        const nextLi = document.createElement('li');
+        nextLi.className = 'page-item' + (currentPage === pageCount ? ' disabled' : '');
+        nextLi.innerHTML = `<a class="page-link" href="#" aria-label="Next"><span>&raquo;</span></a>`;
+        nextLi.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (currentPage < pageCount) {
+            currentPage++;
+            renderProducts();
+            renderPagination();
+            window.scrollTo({ top: document.querySelector('#product-list').offsetTop - 150, behavior: 'smooth' });
+          }
+        });
+        paginationEl.appendChild(nextLi);
+      };
+
+      const applyFilters = () => {
+        currentPage = 1;
+        renderProducts();
+        renderPagination();
+      };
+
+      // Category filtering
+      categoryLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const category = link.dataset.category;
+          categoryLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+
+          productItems.forEach(item => {
+            if (category === 'all' || item.dataset.category === category) {
+              item.classList.remove('hidden');
+            } else {
+              item.classList.add('hidden');
+            }
+            // Reset inline display so renderProducts works cleanly
+            item.style.display = '';
+          });
+
+          searchInput.value = '';
+          applyFilters();
+        });
+      });
+      // Search - now works perfectly
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase().trim();
+
+        // First, determine the active category
+        const activeCategoryLink = document.querySelector('.category-link.active');
+        const activeCategory = activeCategoryLink ? activeCategoryLink.dataset.category : 'all';
+
+        productItems.forEach(item => {
+          const itemCategory = item.dataset.category;
+          const name = item.dataset.name.toLowerCase();
+
+          // Check if item belongs to current category
+          const matchesCategory = (activeCategory === 'all' || itemCategory === activeCategory);
+
+          // Check if name matches search query (or query is empty)
+          const matchesSearch = (query === '' || name.includes(query));
+
+          if (matchesCategory && matchesSearch) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+
+        applyFilters(); // Reset to page 1 and update pagination
+      });
+
+      // Footer links
+      document.querySelectorAll('.category-footer-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const category = link.dataset.category;
+          if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+            e.preventDefault();
+            const targetTab = document.querySelector(`.category-link[data-category="${category}"]`);
+            if (targetTab) targetTab.click();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      });
+
+      // URL hash support
+      const hash = window.location.hash.substring(1).toLowerCase();
+      if (['all', 'kids', 'men', 'women'].includes(hash)) {
+        const targetTab = document.querySelector(`.category-link[data-category="${hash}"]`);
+        if (targetTab) targetTab.click();
+      }
+
+      // Initial load
+      updateCartDisplay();
+      renderProducts();
+      renderPagination();
+    });
+  </script>
+</body>
+
+</html>
